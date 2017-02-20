@@ -1,0 +1,17 @@
+{
+  "extends": "standard",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "brace-style": 0,
+    "indent": ["error", 2, { "VariableDeclarator": 2, "SwitchCase": 1 }],
+    "new-cap": 0,
+    "no-multi-spaces": 0,
+    "no-new": 0,
+    "semi": [2, "always"]
+  }
+}
