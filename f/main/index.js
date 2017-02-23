@@ -1,14 +1,20 @@
 const respond = require('../../alexa/respond.js');
-const router = require('../../alexa/router.js');
+const router  = require('../../alexa/router.js');
 
-module.exports = (params, callback) => {
+module.exports = (params, callback) =>
+{
+  router(params, (err, result, ask) =>
+  {
+    ask = ask || false;
 
-  router(params, (err, result) => {
+    if (err) {
+      return respond.tell('Error: ' + err.message, callback);
+    }
 
-    err ?
-      respond.error(err, callback) :
-      respond.say(result, callback);
+    if (ask) {
+      return respond.ask(result, callback);
+    }
 
+    return respond.tell(result, callback);
   });
-
 };

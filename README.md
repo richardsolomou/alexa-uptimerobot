@@ -15,14 +15,10 @@ Create a file named `env.json` and copy in your [uptimerobot.com](https://uptime
 ```
 {
   "dev": {
-    "uptimerobot": {
-      "key": "UPTIMEROBOT_API_KEY"
-    }
+    "uptimerobot_key": "UPTIMEROBOT_API_KEY"
   },
   "release": {
-    "uptimerobot": {
-      "key": "UPTIMEROBOT_API_KEY"
-    }
+    "uptimerobot_key": "UPTIMEROBOT_API_KEY"
   }
 }
 ```
@@ -41,9 +37,43 @@ Sign in to the [Alexa Skills Kit](https://developer.amazon.com/edw/home.html#/sk
 
 ### Intent schema
 
+```
+{
+  "intents": [
+    {
+      "intent": "CheckStatusIntent",
+      "slots": [
+        {
+          "name": "monitor",
+          "type": "MONITOR"
+        }
+      ]
+    },
+    {
+      "intent": "AMAZON.StopIntent"
+    }
+  ]
+}
+```
+
 ### Custom slot types
 
+Create a custom slot type called `MONITOR` with your Uptime Robot monitor names:
+```
+blog
+website
+```
+
 ### Sample utterances
+
+```
+CheckStatusIntent what is the status of {monitor}
+CheckStatusIntent get the status of {monitor}
+CheckStatusIntent check the status of {monitor}
+CheckStatusIntent is {monitor} up
+CheckStatusIntent is {monitor} down
+CheckStatusIntent is {monitor} running
+```
 
 ### Configuration
 
@@ -55,4 +85,8 @@ Test skill locally
 
 ```bash
 $ lib .
+```
+
+```bash
+$ lib . CheckStatusIntent --monitor Blog
 ```

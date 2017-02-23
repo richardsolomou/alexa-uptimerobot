@@ -1,22 +1,45 @@
 module.exports = {
-  error: function (err, callback) {
-
-    return this.say(`Error: ${err.message}`, callback);
-
-  },
-  say: function (body, callback) {
-
-    callback(null, {
+  /**
+   * Tell
+   *
+   * @param {String}   response
+   * @param {Function} callback
+   *
+   * @returns {Function}
+   */
+  tell: function (response, callback)
+  {
+    return callback(null, {
       version: 'dev',
-      sessionAttributes: {},
       response: {
         outputSpeech: {
           type: 'PlainText',
-          text: body || 'invalid response'
+          text: response || 'invalid response'
         },
         shouldEndSession: true
       }
     });
+  },
 
+  /**
+   * Ask
+   *
+   * @param {String}   response
+   * @param {Function} callback
+   *
+   * @returns {Function}
+   */
+  ask: function (response, callback)
+  {
+    return callback(null, {
+      version: 'dev',
+      response: {
+        outputSpeech: {
+          type: 'PlainText',
+          text: response || 'invalid response'
+        },
+        shouldEndSession: false
+      }
+    });
   }
 };
