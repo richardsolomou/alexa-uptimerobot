@@ -2,12 +2,10 @@
   "name": "main",
   "description": "Function",
   "args": [
-    "First argument",
-    "Second argument"
+    "CheckStatusIntent"
   ],
   "kwargs": {
-    "alpha": "Keyword argument alpha",
-    "beta": "Keyword argument beta"
+    "monitor": "Blog"
   },
   "http": {
     "headers": {}
